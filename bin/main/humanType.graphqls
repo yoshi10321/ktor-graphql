@@ -1,0 +1,9 @@
+
+extend type QueryType {
+  human(id: String): HumanType
+}
+
+type HumanType {
+  name: String
+  homePlanet: String
+}

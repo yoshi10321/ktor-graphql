@@ -1,0 +1,11 @@
+# schema {
+#   droid: DroidType
+# }
+
+extend type QueryType {
+  droid(id: String): DroidType
+}
+
+type DroidType {
+  name: String!
+}
