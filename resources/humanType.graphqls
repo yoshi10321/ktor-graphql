@@ -4,6 +4,7 @@ extend type QueryType {
 }
 
 type HumanType {
+  id: Int
   name: String
   homePlanet: String
 }

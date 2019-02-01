@@ -7,5 +7,6 @@ extend type QueryType {
 }
 
 type DroidType {
+  id: Int
   name: String!
 }
