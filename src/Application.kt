@@ -11,7 +11,9 @@ import io.ktor.features.ContentNegotiation
 import io.ktor.gson.GsonConverter
 import io.ktor.gson.gson
 import io.ktor.http.ContentType
-import io.ktor.request.receiveText
+import io.ktor.http.content.file
+import io.ktor.http.content.static
+import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.post
 import io.ktor.routing.routing
@@ -55,11 +57,16 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         post("/graphql") {
-            val executionResult = build.execute(call.receiveText())
+            val request = call.receive(GraphQLRequest::class)
+            val executionResult = build.execute(request.query)
             val result = executionResult.getData<LinkedHashMap<String, String>>()
             call.respond(result)
+        }
+        static {
+            file("index.html", File("./resources/index.html"))
         }
     }
 }
 
 
+data class GraphQLRequest(val query: String)
