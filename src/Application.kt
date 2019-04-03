@@ -59,8 +59,8 @@ fun Application.module(testing: Boolean = false) {
         post("/graphql") {
             val request = call.receive(GraphQLRequest::class)
             val executionResult = build.execute(request.query)
-            val result = executionResult.getData<LinkedHashMap<String, String>>()
-            call.respond(result)
+            val data = executionResult.getData<LinkedHashMap<String, String>>()
+            call.respond(GraphQLResponse(data))
         }
         static {
             file("index.html", File("./resources/index.html"))
@@ -70,3 +70,4 @@ fun Application.module(testing: Boolean = false) {
 
 
 data class GraphQLRequest(val query: String)
+data class GraphQLResponse(val data: LinkedHashMap<String, String>)
