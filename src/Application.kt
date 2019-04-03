@@ -63,7 +63,7 @@ fun Application.module(testing: Boolean = false) {
             call.respond(GraphQLResponse(data))
         }
         static {
-            file("index.html", File("./resources/index.html"))
+            file("graphiql", File("./resources/index.html"))
         }
     }
 }
