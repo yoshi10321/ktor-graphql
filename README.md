@@ -3,7 +3,7 @@ application start
 
 
 graphiql
-`http://0.0.0.0:8080/index.html`
+`http://0.0.0.0:8080/graphiql
 
 
 sample query
